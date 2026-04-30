@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import SHOES from '../../data';
-import ShoeCard from '../ShoeCard';
+import SHOES from "../../data";
+import ShoeCard from "../ShoeCard";
 
-const ShoeGrid = () => {
+const ShoeGrid = ({ className }) => {
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       {SHOES.map((shoe) => (
         <ShoeWrapper key={shoe.slug}>
           <ShoeCard {...shoe} />

@@ -1,10 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import { COLORS, WEIGHTS } from '../../constants';
-import Logo from '../Logo';
-import SuperHeader from '../SuperHeader';
-import MobileMenu from '../MobileMenu';
+import { COLORS, WEIGHTS } from "../../constants";
+import Logo from "../Logo";
+import SuperHeader from "../SuperHeader";
+import MobileMenu from "../MobileMenu";
+import Icon from "../Icon";
+import { QUERIES } from "../../constants";
+import UnstyledButton from "../UnstyledButton";
+import VisuallyHidden from "../VisuallyHidden";
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -32,10 +36,19 @@ const Header = () => {
         <Side />
       </MainHeader>
 
-      <MobileMenu
-        isOpen={showMobileMenu}
-        onDismiss={() => setShowMobileMenu(false)}
-      />
+      <MobileHeader>
+        <Logo />
+        <Side />
+        <ShoppingBagButton>
+          <Icon id="shopping-bag" />
+          <VisuallyHidden>open shopping cart</VisuallyHidden>
+        </ShoppingBagButton>
+        <UnstyledButton>
+          <Icon id="search" />
+          <VisuallyHidden>search</VisuallyHidden>
+        </UnstyledButton>
+        <MobileMenu />
+      </MobileHeader>
     </header>
   );
 };
@@ -46,8 +59,30 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+
+  @media ${QUERIES.tabletAndBelow} {
+    display: none;
+  }
 `;
 
+const MobileHeader = styled.div`
+  display: none;
+
+  @media ${QUERIES.tabletAndBelow} {
+    height: 72px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    padding: 0 32px;
+    border-top: 4px ${COLORS.gray[900]} solid;
+    border-bottom: 1px ${COLORS.gray[300]} solid;
+  }
+
+  @media ${QUERIES.phoneAndBelow} {
+    gap: 16px;
+    padding: 0 16px;
+  }
+`;
 const Nav = styled.nav`
   display: flex;
   gap: 48px;
@@ -70,4 +105,13 @@ const NavLink = styled.a`
   }
 `;
 
+// const MenuWrapper = styled.button`
+//   background-color: transparent;
+//   border: none;
+//   cursor: pointer;
+// `;
+
+const ShoppingBagButton = styled(UnstyledButton)`
+  transform: translateX(-2px);
+`;
 export default Header;

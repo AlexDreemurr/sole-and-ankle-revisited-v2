@@ -1,7 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import { COLORS, WEIGHTS } from '../../constants';
+import { COLORS, WEIGHTS } from "../../constants";
+import { QUERIES } from "../../constants";
 
 const Sidebar = () => {
   return (
