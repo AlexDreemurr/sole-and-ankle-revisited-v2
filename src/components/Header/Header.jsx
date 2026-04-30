@@ -57,8 +57,9 @@ const MainHeader = styled.div`
   display: flex;
   align-items: baseline;
   padding: 18px 32px;
-  height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+
+  overflow: auto;
 
   @media ${QUERIES.tabletAndBelow} {
     display: none;
@@ -85,7 +86,7 @@ const MobileHeader = styled.div`
 `;
 const Nav = styled.nav`
   display: flex;
-  gap: 48px;
+  gap: clamp(2rem, 9.6vw - 3.75rem, 4rem);
   margin: 0px 48px;
 `;
 

@@ -17,9 +17,6 @@ const MobileMenu = () => {
       <Dialog.Portal>
         <Overlay />
         <Content>
-          <Dialog.Title />
-          <Dialog.Description />
-
           <Wrapper>
             <Side />
             <NavWrapper>
@@ -37,13 +34,13 @@ const MobileMenu = () => {
                 <FooterLink href="/contact">Contact Us</FooterLink>
               </FooterWrapper>
             </Side>
+            <Dialog.Close asChild>
+              <DismissButton>
+                <Icon id="close" size={24} />
+                <VisuallyHidden>close menu</VisuallyHidden>
+              </DismissButton>
+            </Dialog.Close>
           </Wrapper>
-
-          <Dialog.Close asChild>
-            <DismissButton>
-              <Icon id="close" size={24} />
-            </DismissButton>
-          </Dialog.Close>
         </Content>
       </Dialog.Portal>
     </Dialog.Root>
@@ -87,10 +84,12 @@ const NavWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  align-items: flex-start;
 `;
 const FooterWrapper = styled.footer`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 16px;
 
   position: absolute;
@@ -109,16 +108,20 @@ const NavLink = styled.a`
   text-decoration: none;
   text-transform: uppercase;
   line-height: 100%;
-`;
-const DismissButton = styled.button`
-  position: absolute;
-  top: 26px;
-  right: 16px;
 
+  &:first-of-type {
+    color: ${COLORS.secondary};
+  }
+`;
+const DismissButton = styled(UnstyledButton)`
+  position: absolute;
+  top: 10px;
+  right: 0;
+
+  padding: 16px;
   background-color: transparent;
   color: black;
   border: none;
-  padding: 0;
   cursor: pointer;
 `;
 export default MobileMenu;
