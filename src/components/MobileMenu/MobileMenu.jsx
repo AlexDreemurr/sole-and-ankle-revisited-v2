@@ -59,10 +59,7 @@ const Trigger = styled(Dialog.Trigger)`
 `;
 const Overlay = styled(Dialog.Overlay)`
   position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 80%;
+  inset: 0;
 
   background-color: ${COLORS.gray[700]};
   opacity: 0.8;
@@ -71,8 +68,8 @@ const Content = styled(Dialog.Content)`
   position: fixed;
   top: 0;
   bottom: 0;
-  left: 20%;
   right: 0;
+  width: 375px;
   background-color: ${COLORS.white};
 `;
 
